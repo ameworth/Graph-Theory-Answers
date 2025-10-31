@@ -13,6 +13,8 @@
 \usepackage{hyperref}
 \usepackage{enumitem}
 \usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{relsize}
 
 % ------------------------------------------------------------
 % PAGE SETUP
@@ -36,16 +38,23 @@
 
 \newenvironment{question}[1][]{%
   \refstepcounter{question}%
-  \par\noindent\textbf{Question \thequestion.}%
+  \vspace{1em}% space before each question
+  \noindent\textbf{Question \thequestion.}%
   \ifx&#1&%
     % no optional argument
   \else
     \textbf{ #1}%
   \fi
-  \quad % space between label and question text
+  \quad
+  \textit% italicize the question text
 }{%
-  \par\vspace{0.5em}
+  \par\vspace{0.5em}% small space before the answer
 }
+
+% Optional "Answer" environment for clarity
+\newenvironment{answer}{%
+  \par\noindent\textbf{Answer:}\ }%
+{\par\vspace{1em}}
 
 % ------------------------------------------------------------
 % TITLE SETTINGS
@@ -87,7 +96,44 @@ This document contains worked answers and notes corresponding to the lecture not
 \chapter{Basic Counting: Sets and Tuples}
 
 \begin{question}
-    How large is $6\choose{3}$?
+    How large is $[6]\choose{3}$?
+\end{question}
+\begin{answer}
+  From Lemma 1.2(iv) we have that $|\binom{[6]}{3}| = \binom{6}{3} = 20$
+\end{answer}
+
+\begin{question} 
+  For $A \subseteq \mathbb{N}$ define $S(A) = \Sigma_{a \in A}a$. For how many sets $A \in \binom{[6]}{3}$ is $S(A)$ odd? 
+\end{question}
+\begin{answer}
+$\binom{[6]}{3} = \{ A \subseteq [6] : |A| = 3\}$. In order for $S(A)$ to be odd, we need an text odd number of odd elements (since odd + odd + even = even), and at least one odd number (as even + even + even = even). This then gives 2 possible configurations of sets: 
+  \begin{align*}
+    \{odd, odd, odd\} \text{ or } \{odd, even, even\} 
+  \end{align*} 
+  There are $\binom{3}{3}=1$ of the first type, and $\binom{3}{1} \binom{3}{2}= 3 \cdot 3 = 9$ of the second type, thus giving 10 total sets where $S(A)$ is odd. 
+\end{answer}
+
+\begin{question}
+  Let $n \in \mathbb{N}$. How large are the following family of sets: 
+  \begin{align*}
+    \mathcal{F}_1 = \{ A \subseteq     &[n] : 1 \in A\} \\
+    \mathcal{F}_3 = \{ A \subseteq [n] &: |A \cap [3]| \geq 2\} 
+  \end{align*}
+\end{question}
+
+\begin{question}
+  How many sets in $\binom{[6]}{3}$ do not contain two consecutive integers?
+\end{question}
+
+\begin{question}
+  Let $n \in \mathbb{N}$ be odd. Find a simple expression for the sum
+  \begin{align*}
+    \sum\limits_{k>n/2}\binom{n}{k}
+  \end{align*}
+\end{question}
+
+\begin{question}
+  Let $n \in \mathbb{N}$ for which $k \in \mathbb{N}$ is $\binom{n}{k}$ maximal? Is $k$ unique? 
 \end{question}
 
 
@@ -105,13 +151,44 @@ Prove that any graph of order $n \geq 2$ has two vertices of the same degree.
     Can you construct a 4-regular graph of order 7? If not, why not? How about a 3-regular graph of order 7?
 \end{question}
 
+\begin{question}
+  Let $G$ be a graph of order $n \geq 2$ in which every vertex has degree at least $(n-1)/2$. Prove that for every pair of distinct non-adjacent vertices $u, v \in V(G)$ there is a third vertex $w$ such that $uw, vw \in E(G)$
+\end{question}
+
 \section{Examples of Graphs}
 \begin{question}
     Let $n \in \mathbb{N}$. Which of the graphs $C_n, \, K_n,\,  K_{n,2n},\,  K_{n,n} \, \text{and } Q_n$ are regular? For those that are regular, calculate the degree of a vertex in the graph.
 \end{question}
 
+\begin{question}
+  Let $n \in \mathbb{N}$. What are the sizes of the graphs: $C_n, \, K_n, \, K_{n,2n}, K_{n,n}, \, Q_n$?
+\end{question}
+
+\begin{question}
+  Let $1 \leq a \leq b$ be integers. If $K_{a,b}$ has order $n$ what is the smallest and largest that the size of $K_{a,b}$ could be?
+\end{question}
+
 \section{Subgraphs and isomorphisms}
+
+\begin{question}
+  For which $a, b, t \in \mathbb{N}$ does $K_{a,b}$ contain a copy of $C_t$?  
+\end{question}
+
+\begin{question}
+  How many copies of $K_{1,2}$ are there in $K_{a,b}$ (where $a, b \geq 2$)?
+\end{question}
+
+\begin{question}
+  When does $K_{a,b}$ contain a cycle of length $a + b$?
+\end{question}
+
+\begin{question}
+  How many copies of $C_4$ does $Q_n$ contain for $n \geq 2$?
+\end{question}
+
 \section{Walks, paths, and connectedness}
+
+
 \section{Trees}
 \section{Euler Circuits}
 \section{Bipartite Graphs}
