@@ -1,0 +1,130 @@
+\documentclass[12pt,a4paper]{report}
+
+% ------------------------------------------------------------
+% PACKAGES
+% ------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{amsmath}
+
+% ------------------------------------------------------------
+% PAGE SETUP
+% ------------------------------------------------------------
+\geometry{margin=1in}
+\setstretch{1.2}
+
+% ------------------------------------------------------------
+% HEADER / FOOTER
+% ------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+
+% ------------------------------------------------------------
+% QUESTION COUNTER
+% ------------------------------------------------------------
+\newcounter{question}[chapter]
+\renewcommand{\thequestion}{\thechapter.\arabic{question}}
+
+\newenvironment{question}[1][]{%
+  \refstepcounter{question}%
+  \par\noindent\textbf{Question \thequestion.}%
+  \ifx&#1&%
+    % no optional argument
+  \else
+    \textbf{ #1}%
+  \fi
+  \quad % space between label and question text
+}{%
+  \par\vspace{0.5em}
+}
+
+% ------------------------------------------------------------
+% TITLE SETTINGS
+% ------------------------------------------------------------
+\titleformat{\chapter}[display]
+  {\normalfont\LARGE\bfseries}
+  {\chaptertitlename\ \thechapter}{0.5em}{\huge}
+\titlespacing*{\chapter}{0pt}{-5pt}{20pt}
+
+% ------------------------------------------------------------
+% DOCUMENT START
+% ------------------------------------------------------------
+\begin{document}
+
+% Title Page
+\begin{titlepage}
+  \centering
+  {\Huge \bfseries Answers to Lecture Notes \\[1em]}
+  {\large MATH0029: Graph Theory and Combinatorics \\[0.5em]}
+  {\large \today \\[2em]}
+  \vfill
+  {\large Author: Archie Worth\footnote{archie.worth.23@ucl.ac.uk}}
+\end{titlepage}
+
+% Table of Contents
+\tableofcontents
+\clearpage
+
+% ------------------------------------------------------------
+% INTRODUCTION (not numbered)
+% ------------------------------------------------------------
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+
+This document contains worked answers and notes corresponding to the lecture notes of MATH0029: Graph Theory and Combinatorics, as taught by Dr. António Girão in 2025, written by me (Archie Worth). Although they have been checked, expect about $\lceil n/2 \rceil$ to be actually correct.
+
+\clearpage
+
+\chapter{Basic Counting: Sets and Tuples}
+
+\begin{question}
+    How large is $6\choose{3}$?
+\end{question}
+
+
+% ------------------------------------------------------------
+% CHAPTER 2 EXAMPLE
+% ------------------------------------------------------------
+\chapter{Graphs}
+
+\section{Basic Definitions}
+\begin{question}
+Prove that any graph of order $n \geq 2$ has two vertices of the same degree.    
+\end{question}
+
+\begin{question}
+    Can you construct a 4-regular graph of order 7? If not, why not? How about a 3-regular graph of order 7?
+\end{question}
+
+\section{Examples of Graphs}
+\begin{question}
+    Let $n \in \mathbb{N}$. Which of the graphs $C_n, \, K_n,\,  K_{n,2n},\,  K_{n,n} \, \text{and } Q_n$ are regular? For those that are regular, calculate the degree of a vertex in the graph.
+\end{question}
+
+\section{Subgraphs and isomorphisms}
+\section{Walks, paths, and connectedness}
+\section{Trees}
+\section{Euler Circuits}
+\section{Bipartite Graphs}
+\section{Graph Colouring}
+
+\chapter{The Probabilistic Method}
+\section{Basics}
+\section{Mycelskian Graphs}
+\section{Random Graphs}
+\section{Large Girth and Large Chromatic Number}
+
+\chapter{Extremal Graph Theory}
+\section{Hamilton Cycles}
+\section{Forbidden Subgraphs: Mantel's Theorem}
+\section{Forbidden Subgraphs: Turán's Theorem}
+\end{document}
