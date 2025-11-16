@@ -15,6 +15,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{relsize}
+\usepackage{tikz}
 
 % ------------------------------------------------------------
 % PAGE SETUP
@@ -76,7 +77,7 @@
   {\large MATH0029: Graph Theory and Combinatorics \\[0.5em]}
   {\large \today \\[2em]}
   \vfill
-  {\large Author: Archie Worth\footnote{archie.worth.23@ucl.ac.uk}}
+  {\large Author: Archie Worth\footnote{archie.worth.23@ucl.ac.uk}\footnote{ameworth.org}}
 \end{titlepage}
 
 % Table of Contents
@@ -86,11 +87,15 @@
 % ------------------------------------------------------------
 % INTRODUCTION (not numbered)
 % ------------------------------------------------------------
-\chapter*{Introduction}
-\addcontentsline{toc}{chapter}{Introduction}
+\chapter*{Apologia}
+\addcontentsline{toc}{chapter}{Apologia}
 
-This document contains worked answers and notes corresponding to the lecture notes of MATH0029: Graph Theory and Combinatorics, as taught by Dr. António Girão in 2025, written by me (Archie Worth). Although they have been checked, expect about $\lceil n/2 \rceil$ to be actually correct.
+This document contains worked answers and notes corresponding to the lecture notes of MATH0029: Graph Theory and Combinatorics, as taught by Dr. António Girão in 2025, written by a student taking the class. A lot of the answers given will focus more on getting the `spirit' of the question correct, rather than stressing technical details of the proofs.\\
 
+\noindent Although they have been checked, expect about $\lceil n/2 \rceil$ to be actually correct.
+
+\vspace{1cm}
+\noindent London, England\hfill Archie 
 \clearpage
 
 \chapter{Basic Counting: Sets and Tuples}
@@ -120,6 +125,15 @@ $\binom{[6]}{3} = \{ A \subseteq [6] : |A| = 3\}$. In order for $S(A)$ to be odd
     \mathcal{F}_3 = \{ A \subseteq [n] &: |A \cap [3]| \geq 2\} 
   \end{align*}
 \end{question}
+\begin{answer}
+  For the first part, a quick observation will lead to conjecturing $|\mathcal{F}_1| = 2^{n-1}$\\
+  To prove this, proceed by induction on $n \in \mathbb{N}$. The base cases is obviously true for $n=1$, so assume true for $n=k$ and consider $\mathcal{F}_1$ when $n=k+1$. Observe
+  \begin{align*}
+    \mathcal{F}_1 &= \{ A \subseteq [n] : 1 \in A \} \\
+                 &= \{ A \subseteq [k] \cup \{k+1\} : 1 \in A \}
+  \end{align*}
+  From the inductive hypothesis, we already know that there are $2^{k-1}$ sets containing 1. By appending a the number $k+1$ on the end of all of these sets, we get $2^{k-1}$ additional distinct sets containg 1, and no more since order is irrelevant in sets. Hence $|\mathcal{F}_1| = 2^{k-1} + 2^{k-1} = 2*2^{k-1} = 2^{(k+1)-1}$. 
+\end{answer}
 
 \begin{question}
   How many sets in $\binom{[6]}{3}$ do not contain two consecutive integers?
@@ -135,6 +149,9 @@ $\binom{[6]}{3} = \{ A \subseteq [6] : |A| = 3\}$. In order for $S(A)$ to be odd
 \begin{question}
   Let $n \in \mathbb{N}$ for which $k \in \mathbb{N}$ is $\binom{n}{k}$ maximal? Is $k$ unique? 
 \end{question}
+\begin{answer}
+  We have (with a bit of work) that $\binom{n}{k} - \binom{n}{k-1} = \frac{n+1-2k}{n+1}\binom{n+1}{k}$. So for fixed n, we have that the sequence of binomials is increasing when $2k \leq n+1$ and decreasing when $2k \geq n+1$. Hence its maximum is attained when $k = \frac{n+1}{2}$. Since $n$ is a natural number, this is only unique when $n$ is odd. When $n$ is even you can either take the floor or the ceiling.
+\end{answer}
 
 
 % ------------------------------------------------------------
@@ -146,37 +163,114 @@ $\binom{[6]}{3} = \{ A \subseteq [6] : |A| = 3\}$. In order for $S(A)$ to be odd
 \begin{question}
 Prove that any graph of order $n \geq 2$ has two vertices of the same degree.    
 \end{question}
+\begin{answer}
+  The maximum degree a vertex can have in any simple graph is $n-1$. Observe the degree sequence: 
+  \begin{align*}
+    0 \leq d(x_1) \leq d(x_2) \leq \dots \leq d(x_n) \leq n-1 
+  \end{align*}
+  Since there are $n$ vertices, and only $n-1$ values the degree that any vertex can take, by the pigeonhole principle, two vertices must share the same degree.
+\end{answer}
 
 \begin{question}
-    Can you construct a 4-regular graph of order 7? If not, why not? How about a 3-regular graph of order 7?
+    Can you (a) construct a 4-regular graph of order 7? If not, why not? (b) How about a 3-regular graph of order 7?
 \end{question}
+\begin{answer}
+  For (a), observe: 
+  \begin{center}
+    \begin{tikzpicture}[scale=1, every node/.style={draw, circle, inner sep=1.5pt, minimum size=6mm, font=\small}]
+
+    % place vertices 0..6 on a circle and label them 1..7
+    \foreach \i in {0,...,6} {
+      \node (v\i) at ({360/7*\i}:2cm) {};
+    }
+
+   \draw (v0)--(v2);
+   \draw (v0)--(v3);
+   \draw (v0)--(v4);
+   \draw (v0)--(v5);
+
+   \draw (v1)--(v3);
+   \draw (v1)--(v4);
+   \draw (v1)--(v5);
+   \draw (v1)--(v6);
+
+   \draw (v2)--(v4);
+   \draw (v2)--(v5);
+   \draw (v2)--(v6);
+
+   \draw (v3)--(v5);
+   \draw (v3)--(v6);
+
+   \draw (v4)--(v6);
+
+    \end{tikzpicture}
+  \end{center}
+  For (b), this is not possible as it violates the handshake lemma: the sum of degrees must be even, whereas $7*3 = 21$ is odd. 
+\end{answer}
 
 \begin{question}
   Let $G$ be a graph of order $n \geq 2$ in which every vertex has degree at least $(n-1)/2$. Prove that for every pair of distinct non-adjacent vertices $u, v \in V(G)$ there is a third vertex $w$ such that $uw, vw \in E(G)$
 \end{question}
+\begin{answer}
+  Consider the neighborhoods of both vertices $u$ and $v$. By assumption, 
+  \begin{align*}
+    |\Gamma(u)| \geq \frac{n-1}{2}, \hspace{0.5cm} |\Gamma(v)| \geq \frac{n-1}{2}
+  \end{align*}
+  and since $u$ and $v$ are non adjacent and we are working with simple graphs, we have that 
+  \begin{align*}
+    \Gamma(u), \Gamma{v} \subseteq V(G) \setminus \{u,v\}
+  \end{align*}
+  which has $n-2$ vertices. $|\Gamma(u)| + |\Gamma(v)| \geq \frac{n-1}{2} + \frac{n-1}{2} = n-1$. So by pigeonhole, $\Gamma(u)$ and $\Gamma(v)$ must share a vertex. Label that vertex $w$ and the statement is proved. 
+\end{answer}
 
 \section{Examples of Graphs}
 \begin{question}
     Let $n \in \mathbb{N}$. Which of the graphs $C_n, \, K_n,\,  K_{n,2n},\,  K_{n,n} \, \text{and } Q_n$ are regular? For those that are regular, calculate the degree of a vertex in the graph.
 \end{question}
+\begin{answer}
+  $C_n$: $C_n$ is 2-regular. \\
+  $K_n$: $K_n$ is n-1 regular. \\
+  $K_{n,2n}$: $K_{n,2n}$ is not regular as all the vertices in one partition have degree $n$ and all the vertices in the other partition have degree $2n$. \\
+  $K_{n,n}$: $K_{n,n}$ is n-regular as each vertex from one partition is mapped to $n$ vertices in the other partition. \\
+  $Q_n$: $Q_n$ is n regular, as each vertex has $n$ coordinates from which to differ from. 
+\end{answer}
 
 \begin{question}
   Let $n \in \mathbb{N}$. What are the sizes of the graphs: $C_n, \, K_n, \, K_{n,2n}, K_{n,n}, \, Q_n$?
 \end{question}
+\begin{answer}
+  All of these can be worked out from the handshake lemma: divide the sum of vertex degree by 2.\\
+  $|C_n| = n$ as there are $n$ vertices of degree 2. \\
+  $|K_n| = \frac{n(n-1)}{2}$ as there are $n$ vertices of degree $n-1$ \\
+  $|K_{n,2n}| = 2n^2$ as there are $n$ vertices of degree $2n$, and $2n$ vertices of degree $n$. \\
+  $|K_{n,n}| = n^2$ as there are $n$ vertices of degree $n$ and then another $n$ vertices of degree $n$. 
+  $|Q_n| = \frac{2^n n}{2}$ as there are $2^n$ vertices of degree $n$.
+\end{answer}
 
 \begin{question}
   Let $1 \leq a \leq b$ be integers. If $K_{a,b}$ has order $n$ what is the smallest and largest that the size of $K_{a,b}$ could be?
 \end{question}
+\begin{answer}
+  Obviously, the smallest is when $a=b=1$. For the largest, you can solve via calculus, but intuitively, since $a + b = n$ and from before $|K_{a,b}| = ab$, everytime we increase the value of $a$, $b$ must get smaller. Hence the product is maximised when $a=b= n/2$. So the largest size is $n^2/4$.
+\end{answer}
+
 
 \section{Subgraphs and isomorphisms}
 
 \begin{question}
   For which $a, b, t \in \mathbb{N}$ does $K_{a,b}$ contain a copy of $C_t$?  
 \end{question}
+\begin{answer}
+  Assume $a,b,t > 1$ since for $a=b=1$ you can only get $C_1$ and $C_1$ is present for all $a,b > 0$.
+  Consider the parity of $t$. When $t$ is odd, we would need that two vertices of partition are adjacent, so $t$ must be even. WLOG, $a \leq b$. The max cycle we can get is $C_{2a}$. The way to see this is by imagining picking the vertices for the cycle. Call the partitions A and B, and pick the first vertex in A. Your next vertex will have to be in B so pick any such vertex. Then your next vertex must be in A, bringing us back to our original partition with 2 extra edges. You repeat this process until you pick the last vertex in A, joining it to any remaining vertex in B, and then joining that vertex to your first vertex in A, giving you a cycle of length $2a$. You can't do this any more since you've now used up all the vertices in A. Hence this is the largest
+\end{answer}
 
 \begin{question}
   How many copies of $K_{1,2}$ are there in $K_{a,b}$ (where $a, b \geq 2$)?
 \end{question}
+\begin{answer}
+  For every vertex in partition A, we just pick 2 vertices in partition B, hence $a \cdot \binom{b}{2}$
+\end{answer}
 
 \begin{question}
   When does $K_{a,b}$ contain a cycle of length $a + b$?
@@ -185,17 +279,137 @@ Prove that any graph of order $n \geq 2$ has two vertices of the same degree.
 \begin{question}
   How many copies of $C_4$ does $Q_n$ contain for $n \geq 2$?
 \end{question}
+\begin{answer}
+  This was a coursework question!
+\end{answer}
 
 \section{Walks, paths, and connectedness}
 
+\begin{question}
+  What is the length of a longest path in each of the following graphs: $P_n, C_n, K_n, K_{a,b}, \text{ and } Q_n$
+\end{question}
+\begin{answer}
+  $P_n$: the longest path is of length $n-1$, obviously...\\
+  $C_n$: the longest path is of length $n-1$, since any longer will revisit the starting vertex.\\
+  $K_n$: the longest path is again of length $n-1$ as we visit all $n$ vertices in any order. \\
+  $K_{a,b}$: From the previous question, the longest cycle is of length $2*min\{a,b\}$, hence the longest path will be $2min\{a,b\} - 1$,\\
+  $Q_n$:
+\end{answer}
+
+\begin{question}
+  For a connected graph $G$ define the path distance function
+  \begin{align*}
+    d : V(G)^2 \rightarrow \mathbb{Z}^+ \text{ by } d(u,v) = \text{the length of the shortest $u-v$-path}
+  \end{align*}
+  Compute $d$ explicitly for the graphs $P_n$, $C_n$, $K_n$, $K_{a,b}$, and $Q_n$
+\end{question}
+\begin{answer}
+  $P_n$: for $i,j \in P_n, d(i,j) = |i - j|$, since you must traverse all vertices between. \\
+  $C_n$: \\
+  $K_n$: for $i,j \in K_n, d(i,j) = 1$ if $i \neq j$, 0 otherwise. \\
+  $K_{a,b}$: for $i,j \in K_{a,b}, d(i,j) = 1$ if the vertices are in different partitions, and 2 if they are in the same partition. \\
+  $Q_n$: for $i,j \in Q_n, d(i,j) = \text{the number of coords for which the two vertices differ}$\\ 
+\end{answer}
+
+\begin{question}
+  Suppose $G$ has girth at least 7 and minimum degree at least 50, prove that G must have order at least 122551.
+\end{question}
+\begin{answer}
+  Consider a vertex $v \in V(G)$. By assumption, this vertex has at least 50 neighbours. Consider an arbitrary neighbour $w$, by assumption, $w$ must have at least 50 vertices. This is true for all neighbours of $v$, since if two $w$'s shared a vertex we would have a cycle of length 4. This argument then applies again to 50 vertices adjacent to $w$, implying that we have at least $50^3 = 125000$ vertices.
+\end{answer}
 
 \section{Trees}
+\begin{question}
+  Show that sub-trees of a tree satisfy Helly-type property. 
+\end{question}
+\begin{answer}
+  Coursework question!
+\end{answer}
+
+\begin{question}
+  Show that if $T$ contains a vertex of degree $d$, then it must contain at least $d$ leaves. Is this tight?
+\end{question}
+\begin{question}
+  Assume (for contradiction) that $T$ hsa a vertex of degree $d$ but less than $d$ leaves. 
+\end{question}
+
 \section{Euler Circuits}
+
+\begin{question}
+  Let $G$ be a connected graph in which all vertices have even degree except two which have odd degree. Show that there is a walk in $G$ using every edge exactly once. 
+\end{question}
+\begin{answer}
+  Later on, we learn that this question is asking whether such a graph is hamiltonian. 
+\end{answer}
+
 \section{Bipartite Graphs}
+
+\begin{question}
+  Let $G = (V, E)$ be a bipartite graph with non-empty vertex classes $X$ and $Y$. Show that if every vertex in $X$ has degree $x \geq 1$ and every vertex in $Y$ has degree $y \geq 1$, then $x|X| = y|Y|$.
+\end{question}
+
+\begin{question}
+  Which of the following graphs are bipartite: $C_n, K_n, E_n, P_n, Q_n$?
+\end{question}
+\begin{answer}
+  Let $n > 1$ since when $n=1$ all graphs are bipartite.  
+  $C_n$: Since a graph is bipartite iff it contains no odd cycle, $C_n$ is only bipartite when $n$ is even. \\
+  $K_n$: only bipartite when $n=2$ as when $n\geq 3$, $K_n$ contains a copy of $C_3$.\\
+  $E_n$: for all $n$, since we can just take any partition. \\
+  $Q_n$: There are many ways to do this, the simplest way is to notice that we can partition the vertex set into one set containing all vertices with an even number of 1s, and another set containing all vertices with an odd number of 1s. There are no edges within these sets, as two vertices within the each set must differ by at least two coordinates. So $Q_n$ is bipartite for all $n$.
+\end{answer}
+
+
 \section{Graph Colouring}
+\begin{question}
+  For a graph $G$ let 
+  \begin{align*}
+    \omega(G) = max\{t : G \text{ contains a copy of } K_t \} 
+  \end{align*}
+  and 
+  \begin{align*}
+    \alpha(G) = max\{|A| : A \subseteq V(G) \text{ is an independent set } \} 
+  \end{align*}
+  Show that $\chi(G) \geq max\{\omega(G), n/\alpha(G)\}$
+\end{question}
+
+\begin{question}
+  Let $G$ be a graph with chromatic number $k$. Show that $G$ must have at least $\binom{k}{2}$ edges. 
+\end{question}
+\begin{answer}
+  Chromatic number $k$ means that $V = V_1 \dots{\cup} V_2 \dots{\cup} \dots V_k$ is the smallest partition we can get (i.e. we couldn't get $V = V_1 \dots{\cup} V_2 \dots{\cup} \dots V_{k-1}$, since then it would be $k-1$-colourable). In order to be $k$-partite, we need that each partition has an edge going to every other partition, otherwise two partitions have no edges between them and thus can be collapsed into the same partition. Hence this means we have at least $\binom{k}{2}$ edges. 
+\end{answer}
+
+\begin{question}
+  Let $G = (A,B;E)$ be the bipartite graph with vertex set $A \dot{\cup} B$ where $A = \{ a_1, \dots, a_n\}$ and $B = \{ b_1, \dots, b_n\}$ and edges: 
+  \begin{align*}
+    E = \{a_i b_j : 1 \leq i, j \leq n, i \neq j\}  
+  \end{align*}
+  \begin{enumerate}
+    \item Determine $\chi(G)$ and find an ordering of the vertices so that the greedy algorithm uses exactly $\chi(G)$ colours. \\
+    \item Find an ordering of the vertices so that the greedy algorithm uses as many colours as possible.
+  \end{enumerate}
+\end{question}
+
 
 \chapter{The Probabilistic Method}
 \section{Basics}
+
+\begin{question}
+  Let $G = (V,E)$ be a graph with $e$ edges. Prove that if $k \geq 2$ then there exists a partition of $V$ into $k$ classes: $V = V_1 \dot{\cup} V_2 \dot{\cup} \dots \dot{\cup} V_k$ such that at least $\lceil (k-1)e/k\rceil$ of the edges in $E$ go between different classes. 
+\end{question}
+\begin{answer}
+  This is very similar to the construction in Prop 4.5. Consider a random partition $V_1 \dot{\cup} V_2 \dot{\cup} \dots \dot{\cup} V_k$ of $V$ as follows. For each $v \in V(G)$ toss a fair $k$-sided dice (i.e. outcomes $1 \leq i \leq k$), placing $v \in V_i$ depending on the value of the dice. Evidently all dice throws are independent.\\
+  For an edge $uv \in E(G)$ let $X_{uv}$ be such that 
+  \begin{align*}
+    X_{uv} =
+    \begin{cases}
+    1, & \text{if } u, v \text{ are in different parts},\\[4pt]
+    0, & \text{otherwise}.
+    \end{cases}
+  \end{align*}
+\end{answer}
+
 \section{Mycelskian Graphs}
 \section{Random Graphs}
 \section{Large Girth and Large Chromatic Number}
