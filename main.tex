@@ -75,7 +75,7 @@
   \centering
   {\Huge \bfseries Answers to Lecture Notes \\[1em]}
   {\large MATH0029: Graph Theory and Combinatorics \\[0.5em]}
-  {\large \today \\[2em]}
+  {\large Last Updated: \today \\[2em]}
   \vfill
   {\large Author: Archie Worth\footnote{archie.worth.23@ucl.ac.uk}\footnote{ameworth.org}}
 \end{titlepage}
@@ -308,7 +308,7 @@ Prove that any graph of order $n \geq 2$ has two vertices of the same degree.
   $C_n$: the longest path is of length $n-1$, since any longer will revisit the starting vertex.\\
   $K_n$: the longest path is again of length $n-1$ as we visit all $n$ vertices in any order. \\
   $K_{a,b}$: From the previous question, the longest cycle is of length $2*min\{a,b\}$, hence the longest path will be $2min\{a,b\} - 1$,\\
-  $Q_n$:
+  $Q_n$: Bit of a cheat but the graph is hamiltonian so the longest path will be $2^n - 1$.
 \end{answer}
 
 \begin{question}
@@ -509,7 +509,37 @@ No questions! woohoo!
 
 \chapter{Extremal Graph Theory}
 \section{Hamilton Cycles}
+
+\begin{question}
+  Consider the proof of Ore's theorem. Why is the process of adding edges to $G$ that do not create a Hamilton cycle guranteed to terminate?  
+\end{question}
+\begin{answer}
+  Eventually the graph will become complete, which surely has a hamilton cycle. 
+\end{answer}
+
+\begin{question}
+  Deduce Dirac's theorem from Ore's theorem
+\end{question}
+\begin{answer}
+ Clearly, if a graph meets Dirac's condition, then each pair of vertices have degrees that add up to more than $n$.
+\end{answer}
+
+\begin{question}
+  Prove that for any $n \geq 3$ the condition $\delta(G) \geq n/2$ is \textit{best possible} (i.e. find a graph $G_n$ with $\delta(G_n) \geq n/2 - 1$ that does not contain a Hamilton cycle).
+\end{question}
+\begin{answer}
+  sorry
+\end{answer}
+
+
+
 \section{Forbidden Subgraphs: Mantel's Theorem}
 \section{Forbidden Subgraphs: Turán's Theorem}
+\section{Digression: Double counting}
+no questions!!!!
+\section{Asymptotics: Turán density}
+\section{Bipartite forbidden subgraphs}
+\section{Erdos–Stone: the fundamental theorem of extremal graph theory}
 \chapter{Families of sets: Chains, antichains and intersection problems}
+\section{Posets,chains and antichains}
 \end{document}

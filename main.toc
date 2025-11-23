@@ -19,4 +19,9 @@
 \contentsline {section}{\numberline {5.1}Hamilton Cycles}{16}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Forbidden Subgraphs: Mantel's Theorem}{16}{section.5.2}%
 \contentsline {section}{\numberline {5.3}Forbidden Subgraphs: Turán's Theorem}{16}{section.5.3}%
-\contentsline {chapter}{\numberline {6}Families of sets: Chains, antichains and intersection problems}{17}{chapter.6}%
+\contentsline {section}{\numberline {5.4}Digression: Double counting}{16}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Asymptotics: Turán density}{17}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Bipartite forbidden subgraphs}{17}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Erdos–Stone: the fundamental theorem of extremal graph theory}{17}{section.5.7}%
+\contentsline {chapter}{\numberline {6}Families of sets: Chains, antichains and intersection problems}{18}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Posets,chains and antichains}{18}{section.6.1}%
