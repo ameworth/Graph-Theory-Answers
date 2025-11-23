@@ -92,7 +92,7 @@
 
 This document contains worked answers and notes corresponding to the lecture notes of MATH0029: Graph Theory and Combinatorics, as taught by Dr. António Girão in 2025, written by a student taking the class. A lot of the answers given will focus more on getting the `spirit' of the question correct, rather than stressing technical details of the proofs.\\
 
-\noindent Although they have been checked, expect about $\lceil n/2 \rceil$ to be actually correct.
+\noindent I've tried my best to check them all, but please note that these answers are \textbf{not} officially endorsed, so expect about $\lceil n/2 \rceil$ to be actually correct. Please email me with any mistakes you find. 
 
 \vspace{1cm}
 \noindent London, England\hfill Archie 
@@ -132,12 +132,20 @@ $\binom{[6]}{3} = \{ A \subseteq [6] : |A| = 3\}$. In order for $S(A)$ to be odd
     \mathcal{F}_1 &= \{ A \subseteq [n] : 1 \in A \} \\
                  &= \{ A \subseteq [k] \cup \{k+1\} : 1 \in A \}
   \end{align*}
-  From the inductive hypothesis, we already know that there are $2^{k-1}$ sets containing 1. By appending a the number $k+1$ on the end of all of these sets, we get $2^{k-1}$ additional distinct sets containg 1, and no more since order is irrelevant in sets. Hence $|\mathcal{F}_1| = 2^{k-1} + 2^{k-1} = 2*2^{k-1} = 2^{(k+1)-1}$. 
+  From the inductive hypothesis, we already know that there are $2^{k-1}$ sets containing 1. By appending a the number $k+1$ on the end of all of these sets, we get $2^{k-1}$ additional distinct sets containg 1, and no more since order is irrelevant in sets. Hence $|\mathcal{F}_1| = 2^{k-1} + 2^{k-1} = 2*2^{k-1} = 2^{(k+1)-1}$. \\
+
+  For the second part, we can count how many elements of $[3]$ we get in $A$. Either we get exactly two, or all 3. If you fix which elements are in $A$, given we take two or three, the remaining $n-3$ elements of $\{4, \dots, m\}$ are free, giving $2^{n-3}$ choices each time. This gives us: 
+  \begin{align*}
+    |\mathcal{F_3}| = (\binom{3}{2} + \binom{3}{3})2^{n-3} = 4 \cdot 2^{n-3} = 2^{n-1}
+  \end{align*}
 \end{answer}
 
 \begin{question}
   How many sets in $\binom{[6]}{3}$ do not contain two consecutive integers?
 \end{question}
+\begin{answer}
+  There's only 20 sets, so its actually quite easy to just list them. Starting with 1, as the first entry, there must be a gap of at least two between each element of the set, giving us $\{1, 3, 5,\}, \{1, 3, 6,\}, \{1, 4, 6\}$. Now starting with 2, you can only get  $\{2, 4, 6\}$. You cannot start with 3 since your last element would have to be at least 7, which is not in the set. Hence there are 4 such sets. 
+\end{answer}
 
 \begin{question}
   Let $n \in \mathbb{N}$ be odd. Find a simple expression for the sum
@@ -145,6 +153,12 @@ $\binom{[6]}{3} = \{ A \subseteq [6] : |A| = 3\}$. In order for $S(A)$ to be odd
     \sum\limits_{k>n/2}\binom{n}{k}
   \end{align*}
 \end{question}
+\begin{answer}
+  We have from the binomial theorem that $(1+x)^n = \sum\limits_{k=0}^{n}\binom{n}{k}x^k$ hence the sum of binomial coefficients is $2^n$. Binomial coefficients are symmetric and there is no central term since n is odd (see: Pascal's Triangle), hence: 
+  \begin{align*}
+    \sum\limits_{k>n/2}\binom{n}{k} = 1/2 \sum\limits_{k=0}^{n}\binom{n}{k} = 2^{n-1}
+  \end{align*} 
+\end{answer}
 
 \begin{question}
   Let $n \in \mathbb{N}$ for which $k \in \mathbb{N}$ is $\binom{n}{k}$ maximal? Is $k$ unique? 
@@ -154,9 +168,7 @@ $\binom{[6]}{3} = \{ A \subseteq [6] : |A| = 3\}$. In order for $S(A)$ to be odd
 \end{answer}
 
 
-% ------------------------------------------------------------
-% CHAPTER 2 EXAMPLE
-% ------------------------------------------------------------
+
 \chapter{Graphs}
 
 \section{Basic Definitions}
@@ -251,7 +263,7 @@ Prove that any graph of order $n \geq 2$ has two vertices of the same degree.
   Let $1 \leq a \leq b$ be integers. If $K_{a,b}$ has order $n$ what is the smallest and largest that the size of $K_{a,b}$ could be?
 \end{question}
 \begin{answer}
-  Obviously, the smallest is when $a=b=1$. For the largest, you can solve via calculus, but intuitively, since $a + b = n$ and from before $|K_{a,b}| = ab$, everytime we increase the value of $a$, $b$ must get smaller. Hence the product is maximised when $a=b= n/2$. So the largest size is $n^2/4$.
+  Obviously, the smallest is when $a=b=1$. For the largest, you can solve via calculus, but intuitively, since $a + b = n$ and from before $|K_{a,b}| = ab$, everytime we increase the value of $a$, $b$ must get smaller (and visa versa). Hence the product is maximised when a and b are balanced: $a=b= n/2$. So the largest size is $n^2/4$.
 \end{answer}
 
 
@@ -261,8 +273,8 @@ Prove that any graph of order $n \geq 2$ has two vertices of the same degree.
   For which $a, b, t \in \mathbb{N}$ does $K_{a,b}$ contain a copy of $C_t$?  
 \end{question}
 \begin{answer}
-  Assume $a,b,t > 1$ since for $a=b=1$ you can only get $C_1$ and $C_1$ is present for all $a,b > 0$.
-  Consider the parity of $t$. When $t$ is odd, we would need that two vertices of partition are adjacent, so $t$ must be even. WLOG, $a \leq b$. The max cycle we can get is $C_{2a}$. The way to see this is by imagining picking the vertices for the cycle. Call the partitions A and B, and pick the first vertex in A. Your next vertex will have to be in B so pick any such vertex. Then your next vertex must be in A, bringing us back to our original partition with 2 extra edges. You repeat this process until you pick the last vertex in A, joining it to any remaining vertex in B, and then joining that vertex to your first vertex in A, giving you a cycle of length $2a$. You can't do this any more since you've now used up all the vertices in A. Hence this is the largest
+  I opt for a less formal answer in this case. Assume $a,b,t > 1$ since for $a=b=1$ you can only get $C_1$ and $C_1$ is present for all $a,b > 0$.
+  Consider the parity of $t$. When $t$ is odd, we would need that two vertices of partition are adjacent, so $t$ must be even. A cycle needs to alternate between the two sides, which means it must use the same number of vertices from each side. If a cycle is of length $t$, it therefore uses $t/2$ vertices from $A$ and $t/2$ vertices from $B$, so we need enough vertices on each side to supply $t/2$ distinct ones. Hence we get $t/2 \leq min\{a,b\} \implies t \leq 2min\{a,b\}$. 
 \end{answer}
 
 \begin{question}
@@ -275,6 +287,9 @@ Prove that any graph of order $n \geq 2$ has two vertices of the same degree.
 \begin{question}
   When does $K_{a,b}$ contain a cycle of length $a + b$?
 \end{question}
+\begin{answer}
+  From the earlier question, we need $a + b \leq 2min\{a,b\}$. WLOG $a \leq b$, then $a+ b \leq 2a \implies b \leq a$. So only when $a = b$.
+\end{answer}
 
 \begin{question}
   How many copies of $C_4$ does $Q_n$ contain for $n \geq 2$?
@@ -329,9 +344,10 @@ Prove that any graph of order $n \geq 2$ has two vertices of the same degree.
 \begin{question}
   Show that if $T$ contains a vertex of degree $d$, then it must contain at least $d$ leaves. Is this tight?
 \end{question}
-\begin{question}
-  Assume (for contradiction) that $T$ hsa a vertex of degree $d$ but less than $d$ leaves. 
-\end{question}
+\begin{answer}
+  Let $T$ be a tree and let $v \in V$ have degree $d$, let the neighbours of $v$ be $u_1, \dots, u_d$. Removing $v$ and its edges splits the graph into $d$ connected components $C_1, \dots, C_d$, each being a tree. Every finite tree has at least one leaf, choose a leaf $w_i \in C_i$. If $C_i$ is the single vertex $u_i$, then $u_i = w_i$ is a leaf of $T$. If $C_i$ has more than one vertex, then its leaf $w_i$ is not $u_i$, so $w_i$ has degree 1 inside $C_i$ and is not adjacent to $v$. Therefore $w_i$ has degree 1 in $T$, and thus is a leaf in $T$. $w_1, \dots, w_d$ lie in different components $C_i$. So T has at least $d$ leaves. 
+  Tight for $K_{1,d}$. 
+\end{answer}
 
 \section{Euler Circuits}
 
@@ -339,7 +355,7 @@ Prove that any graph of order $n \geq 2$ has two vertices of the same degree.
   Let $G$ be a connected graph in which all vertices have even degree except two which have odd degree. Show that there is a walk in $G$ using every edge exactly once. 
 \end{question}
 \begin{answer}
-  Later on, we learn that this question is asking whether such a graph is hamiltonian. 
+  Let the two vertices of odd degree be $u$, $v$. Create a new graph $G'$ by adding a new edge between $u$ and $v$ (if they're adjacent, just add a parallel edge). Then $G'$ is a connected graph wherein all vertices have even degree, and hence has an eulerian circuit $C$. If we remove the edge $uv$ from $C$, what remains is an eulerian trail whose endpoints are $u$ and $v$. 
 \end{answer}
 
 \section{Bipartite Graphs}
@@ -347,6 +363,13 @@ Prove that any graph of order $n \geq 2$ has two vertices of the same degree.
 \begin{question}
   Let $G = (V, E)$ be a bipartite graph with non-empty vertex classes $X$ and $Y$. Show that if every vertex in $X$ has degree $x \geq 1$ and every vertex in $Y$ has degree $y \geq 1$, then $x|X| = y|Y|$.
 \end{question}
+\begin{answer}
+  This follows from a short double counting argument. Every edge of $G$ has one endpoint in $X$ and one endpoint in $Y$, so we have: 
+  \begin{align*}
+    \sum\limits_{v \in X} deg(v)  = |E| = \sum\limits_{v \in Y} deg(v)
+  \end{align*}
+  since $deg(v) = x$ for $x \in X$ and $deg(v) = y$ for $y \in Y$, the result follows immediately. 
+\end{answer}
 
 \begin{question}
   Which of the following graphs are bipartite: $C_n, K_n, E_n, P_n, Q_n$?
@@ -372,6 +395,10 @@ Prove that any graph of order $n \geq 2$ has two vertices of the same degree.
   \end{align*}
   Show that $\chi(G) \geq max\{\omega(G), n/\alpha(G)\}$
 \end{question}
+\begin{answer}
+  First prove $\chi(G) \geq \omega(G)$. If $K_t \subset G$ where $\omega(G)=t$ then $\chi(G) \geq \chi(K_t) \geq t = \omega(G)$. \\
+  Now prove $\chi(G) \geq n/(\alpha(G))$. Note that a colouring seperates $V(G)$ into colour classes, each of which cannot be bigger than $\alpha(G)$. So we have $n = |V(G)| \leq \chi(G) \cdot \alpha(G) \implies \chi(G) \geq n/(\alpha(G))$. Result follows immediately. 
+\end{answer}
 
 \begin{question}
   Let $G$ be a graph with chromatic number $k$. Show that $G$ must have at least $\binom{k}{2}$ edges. 
@@ -390,7 +417,26 @@ Prove that any graph of order $n \geq 2$ has two vertices of the same degree.
     \item Find an ordering of the vertices so that the greedy algorithm uses as many colours as possible.
   \end{enumerate}
 \end{question}
+\begin{answer}
+  Since $G$ is a bipartite graph with size greater than 1, we have that $\chi(G) = 2$. The ordering in which the greedy algorithm gives two colours is $V(G) = \{a_1, a_2, \dots, a_n, b_1, \dots, b_n\}$. For $a_1$ to $a_n$, the algorithm gives them all the colour 0, since none are adjacent to eachother. Then from $b_1$ to $b_n$ the algorithm gives all of these vertices the colour 1, since each vertex is adjacent only to vertices with colour 0.\\
+  To get the maximal colouring, we arrange the vertices like $\{a_1, b_1, a_2, b_2, \dots, a_n, b_n\}$. This gives us $n$ colours: $a_1$ and $b_1$ are given the colour 0 since they are non adjacent, then $a_2$ is given the colour 1 since it is adjacent to $b_1$. $b_2$ is also given colour 1 since it is adjacent to $a_1$ but not $a_2$. Repeating this process gives colour classes of size two consiting of $\{a_i, b_i\}$ and thus uses $n$ colours. We know that this is maximum since $\Delta(G) + 1 = n-1 + 1 = n$.  
+\end{answer}
 
+\chapter{Matchings}
+
+\begin{question}
+  Let $G$ be a connected bipartite graph with vertex classes $X$, $Y$. Show that every edge of $G$ extends to a matching from $X$ to $Y$ iff $|\Gamma(A)| > |A|$ for every $A \subset X, A \neq \emptyset, X$. 
+\end{question}
+\begin{answer}
+  The only if direction follows immediately from Hall's condition. For the if direction, again due to halls condition, we just need to show that if the graph is connected then we dont get $|\Gamma(A)| = |A|$ for every $A \subset X, A \neq \emptyset, X$. Assume there is a matching from $X$ to $Y$, and there exists a strict non-trivial subset $A$ such that its size is equal to the size of its neighborhood. 
+\end{answer}
+
+\begin{question}
+  An $n \times n$ Latin square is an $n \times n$ matrix with each entry from $1, \dots, n$ such that no two entries in the same row or column are the same. Prove that every $r \times n$ latin rectangle may be extended to an $n \times n$ latin square
+\end{question}
+\begin{answer}
+  
+\end{answer}
 
 \chapter{The Probabilistic Method}
 \section{Basics}
@@ -411,11 +457,59 @@ Prove that any graph of order $n \geq 2$ has two vertices of the same degree.
 \end{answer}
 
 \section{Mycelskian Graphs}
+No questions! woohoo!
 \section{Random Graphs}
+\begin{question}
+  What is the expected number of edges in a random graph $H \in \mathcal{G}(n,p)$?
+\end{question}
+\begin{answer}
+  Let $X_{uv}$ be the indicator variable
+  \begin{align*}
+    X_{uv} = \begin{cases} 
+      1, &\text{if } uv \in E(H)\\
+      0, &\text{otherwise} 
+    \end{cases}
+  \end{align*}
+  Each edge is in $E(H)$ with probability $p$, so $\mathbb{E}[X_{uv}] = 1 \cdot \mathbb{P}[uv \in E(H)] = p$. There are $\binom{n}{2}$ potential edges; let X be the total number of edges, then by linearity of expectation: 
+  \begin{align*}
+    \mathbb{E}[X] = \mathbb{E}[\sum\limits_{uv \in E(H)}X_{uv}] = \sum\limits_{uv \in E(H)}\mathbb{E}[X_{uv}] = \binom{n}{2}p
+  \end{align*}
+\end{answer}
+
+\begin{question}
+  For which $p \in [0,1]$ is it true that $\mathcal{G}(n,p)$ is simply the space of all labeled graphs on vertex set $[n]$ with the uniform probability measure? (i.e. when is generating a graph from $\mathcal{G}(n,p)$ is the same as sampling a graph uniformally at random from the set of all graphs on the vertex set $[n]$)
+\end{question}
+\begin{answer}
+  Intuitively, the answer is immediately $p = 1/2$ since we want the existence of an edge to be as likely as its non existence, generating all graphs at the same probability. Formally, let $X$ denote the number of edges in a given graph $H \in \mathcal{G}(n,p)$. From before, we know that if we generate a random graph, its expected number of edges is $\mathbb{E}_1[X] = \binom{n}{2}p$. In a uniformally random graph, each of the $\binom{n}{2}$ edges is present in exactly half the graphs. So the expected number of edges in a uniformally sampled graph is $\mathbb{E}_2[X] = \frac{\binom{n}{2}}{2}$ so $ p = 1/2$ as the two expectations must be equal. 
+\end{answer}
+
+\begin{question}
+  What is the expected number of triangles in a random graph $H \in \mathcal{G}(n,p)$
+\end{question}
+\begin{answer}
+  There are $\binom{n}{3}$ unordered triples of vertices. For some fixed triple $\{i, j, k\}$. Let $Y_{ijk}$ be the indicator variable that all 3 edges forming a triangle are present. Since the presence of an individual edge is independent, defined in the natural way. We have that $\mathbb{E}[X_{ijk}] = p^3$. Let $T = \sum_{ijk}Y_{ijk}$ be the number of triangles. Then by linearity of expectation $\mathbb{E}[T] = \binom{n}{3}p^3$.  
+\end{answer}
+
+
 \section{Large Girth and Large Chromatic Number}
+\begin{question}
+  If $t \geq 2$, what is the expected number of copies of $K_t$ in a random graph $H \in \mathcal{G}(n,p)$?
+\end{question}
+\begin{answer}
+  Let $X_t$ be the number of cliques of order $t$ in $H$. Any given clique has $\binom{t}{2}$ edges so $\mathbb{P}[\text{a given } K_t \text{ is in  } H] = p^{\binom{t}{2}}$. Since any t-tuple can give a clique of order $t$, there are $\binom{n}{t}$ possible ways to choose the vertices for such a clique. Hence by linearity of expectation $\mathbb{E}[X_t] = \binom{n}{t}p^{\binom{t}{2}}$.
+\end{answer}
+
+\begin{question}
+  What is the expected number of copies of $C_5$ in a random graph $H \in \mathcal{G}(n,p)$
+\end{question}
+\begin{answer}
+  Immediate application of Lemma 4.10 gives $\mathbb{E}[C_5] = \frac{n(n-1)(n-2)(n-3)(n-4)}{10}p^5 = 12\binom{n}{5}p^5$
+\end{answer}
+
 
 \chapter{Extremal Graph Theory}
 \section{Hamilton Cycles}
 \section{Forbidden Subgraphs: Mantel's Theorem}
 \section{Forbidden Subgraphs: Turán's Theorem}
+\chapter{Families of sets: Chains, antichains and intersection problems}
 \end{document}

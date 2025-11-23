@@ -6,15 +6,17 @@
 \contentsline {section}{\numberline {2.3}Subgraphs and isomorphisms}{7}{section.2.3}%
 \contentsline {section}{\numberline {2.4}Walks, paths, and connectedness}{7}{section.2.4}%
 \contentsline {section}{\numberline {2.5}Trees}{8}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Euler Circuits}{8}{section.2.6}%
+\contentsline {section}{\numberline {2.6}Euler Circuits}{9}{section.2.6}%
 \contentsline {section}{\numberline {2.7}Bipartite Graphs}{9}{section.2.7}%
-\contentsline {section}{\numberline {2.8}Graph Colouring}{9}{section.2.8}%
-\contentsline {chapter}{\numberline {3}The Probabilistic Method}{11}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Basics}{11}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Mycelskian Graphs}{11}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Random Graphs}{11}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Large Girth and Large Chromatic Number}{11}{section.3.4}%
-\contentsline {chapter}{\numberline {4}Extremal Graph Theory}{12}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Hamilton Cycles}{12}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Forbidden Subgraphs: Mantel's Theorem}{12}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Forbidden Subgraphs: Turán's Theorem}{12}{section.4.3}%
+\contentsline {section}{\numberline {2.8}Graph Colouring}{10}{section.2.8}%
+\contentsline {chapter}{\numberline {3}Matchings}{12}{chapter.3}%
+\contentsline {chapter}{\numberline {4}The Probabilistic Method}{13}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Basics}{13}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Mycelskian Graphs}{13}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Random Graphs}{13}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Large Girth and Large Chromatic Number}{14}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Extremal Graph Theory}{16}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Hamilton Cycles}{16}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Forbidden Subgraphs: Mantel's Theorem}{16}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Forbidden Subgraphs: Turán's Theorem}{16}{section.5.3}%
+\contentsline {chapter}{\numberline {6}Families of sets: Chains, antichains and intersection problems}{17}{chapter.6}%
