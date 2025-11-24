@@ -92,7 +92,9 @@
 
 This document contains worked answers and notes corresponding to the lecture notes of MATH0029: Graph Theory and Combinatorics, as taught by Dr. António Girão in 2025, written by a student taking the class. A lot of the answers given will focus more on getting the `spirit' of the question correct, rather than stressing technical details of the proofs.\\
 
-\noindent I've tried my best to check them all, but please note that these answers are \textbf{not} officially endorsed, so expect about $\lceil n/2 \rceil$ to be actually correct. Please email me with any mistakes you find. 
+\noindent I've tried my best to check them all, but please note that these answers are \textbf{not} officially endorsed, so expect about $\lceil n/2 \rceil$ to be actually correct. Please email me with any mistakes you find. \\
+
+\noindent If you would like to contribute by helping fill in blank questions, please let me know!
 
 \vspace{1cm}
 \noindent London, England\hfill Archie 
@@ -535,9 +537,34 @@ No questions! woohoo!
 
 \section{Forbidden Subgraphs: Mantel's Theorem}
 \section{Forbidden Subgraphs: Turán's Theorem}
+\begin{question}
+  How many edges does $T_4(14)$ contain? Does $T_4(14)$ contain a subgraph isomorphic to $T_3(10)$?
+\end{question}
+\begin{answer}
+  $T_4(14)$ is a complete 4-partite graph wherein two classes have 3 vertices, and the other 2 have 4 vertices. Hence there are 73 edges. $T_3(10)$ is just $T_4(14)$ but with only one vertex class containing four vertices. So yes. 
+\end{answer}
 \section{Digression: Double counting}
 no questions!!!!
 \section{Asymptotics: Turán density}
+\begin{question}
+  Prove that $\pi(K_{1,t}) = 0$ for any $t \geq 1$. 
+\end{question}
+\begin{answer}
+  The existence of $K_{1,t}$ as a subgraph is equivalent to finding a vertex of degree at least $t$, so being $K_{1,t}$ free is equivalent to having max degree $t-1$. The handshake lemma then implies that $ex(n, K_{1,t}) \leq (t-1)n/2$. Hence 
+  \begin{align*}
+    \pi(K_{1,t}) = \lim_{n\to\infty} \frac{ex(n, K_{1,t})}{\binom{n}{2}} = \lim_{n\to\infty} \frac{(t-1)n/2}{(n-1)n/2} = 0
+  \end{align*}
+\end{answer}
+
+\begin{question}
+  Prove that $\pi(C_{2r}) = 0$ for any $r \geq 1$
+\end{question}
+\begin{answer}
+  Not sure how to do this without stealing from later in the course. Erdos–Stone says that since $\chi(C_{2r}) = 2$ we have that
+  \begin{align*}
+    \pi(C_{2r}) = 1 - \frac{1}{2-1} = 0
+  \end{align*}
+\end{answer}
 \section{Bipartite forbidden subgraphs}
 \section{Erdos–Stone: the fundamental theorem of extremal graph theory}
 \chapter{Families of sets: Chains, antichains and intersection problems}
