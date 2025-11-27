@@ -46,8 +46,8 @@
   \else
     \textbf{ #1}%
   \fi
+  \textit
   \quad
-  \textit% italicize the question text
 }{%
   \par\vspace{0.5em}% small space before the answer
 }
@@ -169,6 +169,39 @@ $\binom{[6]}{3} = \{ A \subseteq [6] : |A| = 3\}$. In order for $S(A)$ to be odd
   We have (with a bit of work) that $\binom{n}{k} - \binom{n}{k-1} = \frac{n+1-2k}{n+1}\binom{n+1}{k}$. So for fixed n, we have that the sequence of binomials is increasing when $2k \leq n+1$ and decreasing when $2k \geq n+1$. Hence its maximum is attained when $k = \frac{n+1}{2}$. Since $n$ is a natural number, this is only unique when $n$ is odd. When $n$ is even you can either take the floor or the ceiling.
 \end{answer}
 
+\begin{question}
+  Give a combinatorial proof that if $0 \leq a, k \leq n$ are integers then 
+  \begin{align*}
+    \sum\limits_{b=0}^k \binom{a}{b} \binom{n - a}{n-b} = \binom{n}{k}
+  \end{align*}
+\end{question}
+
+\begin{question}
+  Give a combinatorial proof that if $0 \leq k \leq n$ are integers then 
+  \begin{align*}
+    \binom{n}{k} = \sum\limits_{a=k}^{n}\binom{a-1}{k-1}
+  \end{align*}
+\end{question}
+
+\begin{question}
+  Let $m, n \leq 1$ be integers. Consider the paths starting from $(0,0)$ in $\mathbb{Z}^2$ in which each step is from $(a,b)$ to $(a+1,b)$ or from $(a,b)$ to $(a,b+1)$. 
+  \begin{enumerate}
+    \item How many such paths are there from $(0,0)$ to $(m,n)$
+    \item How many such paths are there from $(0,0)$ to $(n,n)$ that always remain on or below the line $y=x$?
+  \end{enumerate}
+\end{question}
+
+
+\begin{question}
+  Use induction to prove that for $n\geq 1$
+  \begin{align*}
+    \binom{2n}{n}\frac{1}{4^n} = \frac{1}{2n}\prod\limits_{i=1}^{n-1}(1 + \frac{1}{2j})
+  \end{align*}  
+  Show that for $n \in \mathbb{N}$
+  \begin{align*}
+    \frac{4^n}{2 \sqrt{n}} < \binom{2n}{n} < \frac{4^n}{ \sqrt{2n+1}}
+  \end{align*}
+\end{question}
 
 
 \chapter{Graphs}
@@ -437,7 +470,7 @@ Prove that any graph of order $n \geq 2$ has two vertices of the same degree.
   An $n \times n$ Latin square is an $n \times n$ matrix with each entry from $1, \dots, n$ such that no two entries in the same row or column are the same. Prove that every $r \times n$ latin rectangle may be extended to an $n \times n$ latin square
 \end{question}
 \begin{answer}
-  
+  sorry
 \end{answer}
 
 \chapter{The Probabilistic Method}
@@ -456,7 +489,19 @@ Prove that any graph of order $n \geq 2$ has two vertices of the same degree.
     0, & \text{otherwise}.
     \end{cases}
   \end{align*}
+  UNFINISHED WRITEUP
 \end{answer}
+
+\begin{question}
+  Let $e(A)$ denote the number of edges contained in a set of vertices $A$. Prove that if $G = (V,E)$ is a graph then there is a partition $V = V_1 \cup V_2$ satisfying $e(V_1) + e(V_2) \leq |E|/2$ and $\text{max}_{i=1,2} e(V_i) \leq |E|/3$.
+\end{question}
+\begin{answer}
+  Done this one just need to write up.
+\end{answer}
+
+\begin{question}
+  Crazy sum-free question
+\end{question}
 
 \section{Mycelskian Graphs}
 No questions! woohoo!
@@ -533,9 +578,31 @@ No questions! woohoo!
   sorry
 \end{answer}
 
+\begin{question}
+  Prove that any graph of order $n \geq 3$ and size at least $\binom{n-1}{2} + 2$ contains a hamilton cycle. Give an example to prove that this is best possible.
+\end{question}
+\begin{answer}
+  sorry
+\end{answer}
 
+\begin{question}
+  Prove that the hypercube $Q_n$ has a hamilton cycle for each integer $n \geq 2$. 
+\end{question}
+\begin{answer}
+  sorry
+\end{answer}
 
 \section{Forbidden Subgraphs: Mantel's Theorem}
+\begin{question}
+  Consider the first proof of Mantel's theorem. Can you adapt this argument to prove the following result: if $G$ is a $K_3$-free graph of order $n$ and size $e = \lfloor n^2/4 \rfloor -t$, where $t \in \mathbb{N}$, then $G$ contains a bipartite subgraph with at least $e-t$ edges. 
+\end{question}
+\begin{answer}
+  sorry
+\end{answer}
+
+\begin{question}
+  
+\end{question}
 \section{Forbidden Subgraphs: Turán's Theorem}
 \begin{question}
   How many edges does $T_4(14)$ contain? Does $T_4(14)$ contain a subgraph isomorphic to $T_3(10)$?
@@ -543,6 +610,17 @@ No questions! woohoo!
 \begin{answer}
   $T_4(14)$ is a complete 4-partite graph wherein two classes have 3 vertices, and the other 2 have 4 vertices. Hence there are 73 edges. $T_3(10)$ is just $T_4(14)$ but with only one vertex class containing four vertices. So yes. 
 \end{answer}
+
+\begin{question}
+  Give a formula for $t_r(n)$ in terms of $r, n$ and $t_r(n-1)$
+\end{question}
+\begin{answer}
+  sorry
+\end{answer}
+
+\begin{question}
+  Let $G$ be a graph on $n\geq 5$ vertices and with minimal degree $\delta(G)> \frac{3n}{4}$. Show that $G$ contains a copy of $K_5$
+\end{question}
 \section{Digression: Double counting}
 no questions!!!!
 \section{Asymptotics: Turán density}
@@ -569,4 +647,6 @@ no questions!!!!
 \section{Erdos–Stone: the fundamental theorem of extremal graph theory}
 \chapter{Families of sets: Chains, antichains and intersection problems}
 \section{Posets,chains and antichains}
+\section{LYM-inequality}
+\section{Intersecting Families}
 \end{document}
