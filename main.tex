@@ -13,6 +13,7 @@
 \usepackage{hyperref}
 \usepackage{enumitem}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{relsize}
 \usepackage{tikz}
@@ -500,8 +501,35 @@ Prove that any graph of order $n \geq 2$ has two vertices of the same degree.
 \end{answer}
 
 \begin{question}
-  Crazy sum-free question
+  A set $A \subsetneq \mathbb{N}$ is sum-free if there are no $a, b, c \in A$ satisfying $a + b = c$. Let $p = 3k + 2$ prime satisfying $p > 2 max B$ where $B \subsetneq \mathbb{N}$ and let $T = \{k+1, \dots, 2k+1\}$
+  \begin{enumerate}
+    \item Show that $T$ is sum-free modulo $p$.
+    \item Let $m \in [p-1]$ be chosen uniformly at random. If $b \in B$ show that $\mathbf{P}[mb \, mod \, p \in T ] = \frac{|T|}{p-1} = \frac{k+1}{3k + 1} > 1/3$
+    \item Define $B_m = \{mb \, \, mod \, p : b \in B\} \subset [p-1]$. Show that $\mathbf{E}[|B_m \cap T|] > |B| /3$
+    \item Let $m^*$ be chosen such that $|B_{m^*} \cap T|$ is maximised. Explain why its greater than $|B|/3$ 
+    \item Let $A = \{b \in B : m^*b \, \, mod \, p \in T\}$. Explain why $A$ is a sumfree subset of $B$ with more than $|B|/3$ elements. 
+  \end{enumerate}
 \end{question}
+\begin{answer}
+  \begin{enumerate}
+    \item Assume that $T$ is not sum free, then $s + t - u = m(3k+2)$ where $m \in \mathbb{Z}$. Observe that max$\{s + t - u\} = (2k+1) + (2k + 1)-(k+1) = 3k +1 < 3k+2$, hence m = 0 and we have $s + t = u$. But min${s+t} = 2k + 2 > \text{max}{u} = 2k+1$ so we have a contradiction. 
+    \item Note that $p-1 = 3k+1$ so $m \in [3k +1]$. Hence $mb \, mod \, p \in T$ is essentially asking if $m \in T$. $T \subset [3k + 1]$ so since we are sampling uniformly the probability is $\frac{|T|}{p-1}$. $|T| = k + 1$ so $|T|/p-1 = k+1/3k + 1 > 1/3$
+    \item For each $b$, let $X_b$ be the indicator variable for the event $mb \, mod \, p \in T$. Then we have, by linearity of expectation
+    \begin{align*}
+      \mathbf{E}[|B_m \cap T|] &= \mathbf{E}[\sum_{b \in B}X_b]\\
+                               &= \sum_{b \in B} \mathbf{E}[X_b]\\
+                               &> \sum_{b \in B} 1/3\\
+                               &= |B|/3
+    \end{align*}
+    \item Let $m^*$ be the value at which $|B_m \cap T|$ is maximised. By first moment, $\exists \omega_1, \omega_2 \in \Omega$ such that 
+    \begin{align*}
+      X(\omega_2) > \mathbf{E}[|B_m \cap T|] > |B|/3
+    \end{align*}
+    Since $m^*$ gives the maximal value,$|B_{m^*} \cap T|$ must be the bigger than any other event. so the inequality holds.
+    \item $A$ is clearly a subset of $B$. Assume that $\exists s, t, u \in A$ such that $s + t = u$. Then we have that $m^*s + m^*t = m*u$ mod $p \in T$. The size of p ensure no "wraparound" problems. This implies that $T$ is not sum free mod $p$ which is a contradiction. Hence $A$ is sum-free. Observe also that $|A| = |B_{m^*} \cap T|$. 
+  \end{enumerate}
+\end{answer}
+
 
 \section{Mycelskian Graphs}
 No questions! woohoo!
@@ -568,28 +596,29 @@ No questions! woohoo!
   Deduce Dirac's theorem from Ore's theorem
 \end{question}
 \begin{answer}
- Clearly, if a graph meets Dirac's condition, then each pair of vertices have degrees that add up to more than $n$.
+  If a graph meets Dirac's condition, then it satisfies Ore's condition since if $\delta(v) \geq n/2$ then $d(v) + d(u) \geq n/2 + n/2 = n$. so Dirac's condition guarantees there is a Hamilton cycle. 
 \end{answer}
 
 \begin{question}
   Prove that for any $n \geq 3$ the condition $\delta(G) \geq n/2$ is \textit{best possible} (i.e. find a graph $G_n$ with $\delta(G_n) \geq n/2 - 1$ that does not contain a Hamilton cycle).
 \end{question}
 \begin{answer}
-  sorry
+   To prove for general $n$, consider the graph $K_{k,n-k}$. The only way there can be a hamilton cycle in a bipartite graph is if both partitions are of equal size, since the path needs to alternate between partitions. So for $n = 2k$ we can take $K_{k+1, k-1}$. $\delta(G) = k-1 = n/2 - 1$ but has no hamilton cycle. For $n = 2k + 1$ we can take $K_{k, k+1}$, then $\delta(G) = k \geq (n-1)/2 \geq n/2 -1$
 \end{answer}
 
 \begin{question}
   Prove that any graph of order $n \geq 3$ and size at least $\binom{n-1}{2} + 2$ contains a hamilton cycle. Give an example to prove that this is best possible.
 \end{question}
 \begin{answer}
-  sorry
+  For the first part, any graph of order $n$ with $\binom{n-1}{2} + 2$ edges must contain a clique of order $n-1$. All of the nodes in the clique have order $n-2$. There are $n-1$ nodes in the clique, so there must be some node not in it, say $v$. As $K_{n-1}$ has $\binom{n-1}{2}$ edges there must be at least two edges left. As we only allow simple graphs, these edges must be adjacent to $v$, so $d(v) \geq 2$. Hence Ore's theorem applies and the graph is Hamiltonian.\\
+  Note that $K_{n-1}$ has $\binom{n-1}{2}$ edges, so if we adjoin a path of length 1 to one of the nodes of $K_{n-1}$ then it has less than $\binom{n-1}{2} + 2$ edges but clearly does not have a hamilton cycle. 
 \end{answer}
 
 \begin{question}
   Prove that the hypercube $Q_n$ has a hamilton cycle for each integer $n \geq 2$. 
 \end{question}
 \begin{answer}
-  sorry
+  Can't use Ore's or Dirac's since $2n \ll 2^n$ as $n \to \infty$. I will sketch a proof via induction. Suppose that we have a hamiltonian cycle for $Q_{k-1}$. Note that $Q_k$ is just two copies of $Q_{k-1}$ with $k-1$ edges between them. Construct a Hamiltonian cycle as follows. Follow the hamiltonian cycle on the first $Q_{k-1}$ until you are one edge away from reaching the starting vertex. Then use one of the $k-1$ edges to traverse to the other $Q_{k-1}$ and do the same hamiltonian path you have just done but in reverse, again stopping before you return to the starting node for this hamiltonian cycle. As you have done it in reverse, you will be adjacent to the starting vertex of the first hamiltonian cycle (like a mirror!). Traverse back to complete the cycle. 
 \end{answer}
 
 \section{Forbidden Subgraphs: Mantel's Theorem}
@@ -597,12 +626,59 @@ No questions! woohoo!
   Consider the first proof of Mantel's theorem. Can you adapt this argument to prove the following result: if $G$ is a $K_3$-free graph of order $n$ and size $e = \lfloor n^2/4 \rfloor -t$, where $t \in \mathbb{N}$, then $G$ contains a bipartite subgraph with at least $e-t$ edges. 
 \end{question}
 \begin{answer}
-  sorry
+  Suppose that $G$ is $K_3$ free of order $n$. Let $A \subseteq V$ be the largest indepdent set with $|A| = a$. Note that all edges in $G$ have at least one vertex in $V\setminus A$ otherwise $A$ would no longer be indepedent. Let $E(H)$ be the bipartite subgraph induced by taking the edges which have exactly one vertex in $V\setminus A$. The remaining edges must have both vertices in $V\setminus A$, call these $E_{rem}$. Then we have $|E(G)| = |E(H)| + |E_{rem}|$. Rearranging and substituting our known values we get: 
+  \begin{align*}
+    |E_{rem}| = e - |E(H)|
+  \end{align*}
+  Since the graph is $K_3$-free, we have that each $\Gamma(v)$ is an independent set and thus $d(v) = |\Gamma(v)| \leq a$. Hence we have the following inequality: 
+  \begin{align*}
+    \sum_{v \in V\setminus A} d(v) = |E(H)| + 2|E_{rem}| \leq n^2/4 = e + t
+  \end{align*}
+  Thus substituting earlier values we have: 
+  \begin{align*}
+    |E(H)| + 2(e - |E(H)|) \leq e + t\\
+    \implies - |E(H)| + 2(e) \leq e + t\\
+    \implies e - t \leq |E(H)|
+  \end{align*}
+  as required
 \end{answer}
 
 \begin{question}
-  
+  . 
 \end{question}
+\begin{answer}
+  \begin{enumerate}
+    \item $G$ must contain an odd length cycle as it is not bipartite. 
+    \item $C_3 \cong K_3$ and it is $K_3$-free so the smallest odd cycle it can have is of length 5. 
+    \item Let $C = v_1, v_2, \dots, v_{2k+1}$. If $v \in C$ then obviously it has at most 2 neighbours otherwise we create a $K_3$.  Suppose that there is a $w \in V(G)\setminus C$ with more than two neighbours in $C$, WLOG call these $v_i, v_j, v_l$, all of these edges must be non-adjacent, as otherwise we create a $K_3$. There is no way to pick 3 nodes from $C_5$ such that they are all non adjacent (draw a picture to convince yourself). Hence in this scenario we must have at least $|C| \geq 7$. If $|C| = k$ then we can form a cycle of length $k-2$ by using the extra edges given by the neighbours. Not going to prove this explicitly. 
+    \item Let $e$ be the number of edges from $G\setminus C$ to $C$. Let $|G \setminus C| = M$. Note that $C \subseteq G$ so $M \geq 0$. Using our two bounds we get: 
+    \begin{align*}
+      e > \sum_{v \in G\setminus C} \delta(v) = 2n/5 \cdot M\\
+      e \leq 2M
+    \end{align*} 
+    \item Putting those two together we get $M 2n/5 < e \leq 2$ which implies that $n < e \leq 5$. This is obviously impossible when $n \geq 5$, but we must have $n \geq 5$ as parts 1 and 2 guarantee the existence of a cycle of at least length 5. 
+  \end{enumerate}
+\end{answer}
+\begin{question}
+. 
+\end{question}
+\begin{answer}
+  $C_5$ suffices. 
+\end{answer}
+\begin{question}
+. 
+\end{question}
+\begin{answer}
+  Let $G$ be any graph of order $n$ split into two classes $A$ and $B$ with sizes as equal as possible. Either way we have $|A| = |B| = n/2$ or WLOG $|A| = (n+1)/2$ and $|B| = (n-1)/2$. Either way, the maximum number of edges between them is $\lfloor n^2/4\rfloor$. The total number of possible edges in $G$ is $\binom{n}{2}$ so given any edge $e$, the probability that $e$ is one of the crossing edges is 
+  \begin{align*}
+    P(e \text{ crosses}) = \frac{\lfloor n^2/4 \rfloor}{\binom{n}{2}} = \frac{2\lfloor n^2/4 \rfloor}{n(n-1)}
+  \end{align*}
+  If we let $X$ be a random variable measuring the amount of edges that cross, by linearity of expectation we have: 
+  \begin{align*}
+    E[X] = \frac{2m\lfloor n^2/4 \rfloor}{n(n-1)}
+  \end{align*}
+  Hence by the first moment there must be a bipartite subgraph with at least this many crossing edges. 
+\end{answer}
 \section{Forbidden Subgraphs: Turán's Theorem}
 \begin{question}
   How many edges does $T_4(14)$ contain? Does $T_4(14)$ contain a subgraph isomorphic to $T_3(10)$?
@@ -615,12 +691,29 @@ No questions! woohoo!
   Give a formula for $t_r(n)$ in terms of $r, n$ and $t_r(n-1)$
 \end{question}
 \begin{answer}
-  sorry
+  Let $T_r(n)$ be the $r$-partite graph with $b$ vertex classes of order $\lfloor n/r \rfloor$ and $r-b$ classes of order $\lceil n/r \rceil$ where $b$ satisfies $n = b\lfloor n/r \rfloor + (r-b)\lceil n/r \rceil$. Within $T_r(n)$ we can find a copy of $T_r(n-1)$ by deleting one of the vertices. If we specifically delete a vertex from one of the $\lceil n/r \rceil$ sized classes, we don't get any reshuffling (convince yourself of this!). So by deleting one vertex we lose the $b\lfloor n/r \rfloor$ edges from the smaller classes and $(r-1-b)\lceil n/r \rceil$ from the larger classes. Hence: 
+  \begin{align*}
+    t_r(n) &= t_r(n-1) + b\lfloor n/r \rfloor +  (r-1-b)\lceil n/r \rceil \\
+           &= t_r(n-1) + n - \lceil n/r \rceil
+  \end{align*}
 \end{answer}
 
 \begin{question}
   Let $G$ be a graph on $n\geq 5$ vertices and with minimal degree $\delta(G)> \frac{3n}{4}$. Show that $G$ contains a copy of $K_5$
 \end{question}
+\begin{answer}
+  The trick with this question is to show that $|E(G)| \geq ex(n, K_5) = t_4(n)$. How many edges are in $T_4(n)$? The number of edges is maximised when $n$ is divisible by 4, so assume this is the case. Then $t_4(n) = 3 \cdot (n/4)(n/4) + 2 \cdot (n/4)(n/4) + (n/4)(n/4) = 6n^2/16 = 3n^2/8$. The total number of edges in $G$ is at least $3n^2/8$ due to the minimal degree and handshake lemma. Hence the number of edges in $G$ is at least the turan number so must contain a $K_5$.
+\end{answer}
+\begin{question}
+. 
+\end{question}
+\begin{answer}
+  Suppose that $G$ is not bipartite, and let $C = v_1, \dots, v_{2k+1}$ be the shortest odd cycle. Note that this must exist and $|C| = 2k + 1 \geq 5$ by question 5.7. . Obviously the number of edges in $C$ is $2k+1$. In $G\setminus C$. Since $G\setminus C$ is still $K_3$ free we can use mantel's to bound the number of edges in $G \setminus C$ to be $\lfloor (n - |C|)^2 /4 \rfloor$. Then from 5.7 each of the vertices in $G \setminus C$ has at most 2 neighbours in $C$. So the max number of vertices between $G \setminus C$ and $C$ is $2(n - |C|)$. Putting all this together we get: 
+  \begin{align*}
+    |E(G)| \leq |C| + 2(n - |C|) +\lfloor (n - |C|)^2 /4 \rfloor
+  \end{align*}
+  Substituting $|C| \geq 5$, rearranging, and calculating that $t_2(n-1) = \lfloor (n-1)^2/4 \rfloor$ we get that $|E(G)| \leq t_2(n-1) + 1$ (trust me! I just didn't want to write all the algebra). Thus we have a contradiction. 
+\end{answer}
 \section{Digression: Double counting}
 no questions!!!!
 \section{Asymptotics: Turán density}
@@ -649,4 +742,44 @@ no questions!!!!
 \section{Posets,chains and antichains}
 \section{LYM-inequality}
 \section{Intersecting Families}
+\begin{question}
+  Let $n \geq 4$, give three examples of non-isomorphic intersecting families of sets in $\mathcal{P}([n])$ of size $2^{n-1}$. Note: two families of sets $\mathcal{A, B} \subseteq \mathcal{P}([n])$ are isomorphic iff there is a bijection $f : [n] \rightarrow [n]$ such that $\mathcal{B} = \{f(A): A \in \mathcal{A}\}$.
+\end{question}
+\begin{answer}
+  
+\end{answer}
+\section{The linear algebra method}
+No questions!
+\section{L-intersecting families}
+\chapter{Ramsey Theory}
+
+\section{Ramsey's theorem}
+\begin{question}
+  Show that $R(3,5) \leq 14$
+\end{question}
+\begin{answer}
+  Suppose that we have a random red-blue colouring of $K_{14}$. Suppose that we have some vertex $v$ with $d_{red} \geq 5$. Either one of the edges in $\Gamma_{red}(v)$ are red, and thus we automatically get a red $K_3$ with $v$ or they're all blue, and we get a blue $K_5$. Now suppose that for all $v$ we have $d_{red}(v) \leq 4$, then by symmetry we have that $d_{blue}{v} \geq 9$. Since $R(3, 4) = 9$, any way that we red-blue colour $\Gamma_{blue}(v)$ we get a red $K_3$ or a blue $K_4$. If we get a red $K_3$ then we are done, if we get a blue $K_4$ then we can form a blue $K_5$ with $v$. 
+\end{answer}
+\begin{question}
+  Show that $R(5,5) \leq 64$
+\end{question}
+\begin{answer}
+  From the proof of Ramsey's theorem, we have that $R(s,t) \leq R(s-1, t) + R(s, t-1)$. So $R(5,5) \leq R(4,5) + R(5,4) = 2R(4,5)$. Each $R(4,5) \leq R(3,5) + R(4,4) \leq 14 + 18 = 32$. Hence $R(5,5) \leq 2\cdot 32 = 64$.  
+\end{answer}
+
+\begin{question}
+  Show that $R(5,5) \leq 63$
+\end{question}
+\begin{answer}
+  Sorry. I think we can actually get the bound that $R(s,t) \leq R(s-1, t) + R(s, t-1) - 1$ but I dont know how to prove it. From there it follows immediately.
+\end{answer}
+\begin{question}
+  .
+\end{question}
+\begin{answer}
+  Assume the graph containing all the red edges is disconnected. This means we can split the entire graph into (at least) two components without any red ages between them. Let these components be called $A$ and $B$, and pick arbitrary $a \in A$, $b \in B$. There must be an edge between $a$ and $b$ since we are in a complete graph, and this edge must be blue. This is true for all $a \in A$ and $b \in B$. So the blue subgraph is connected. 
+\end{answer}
+\section{Ramsey numbers: lower bounds and more colours}
+\section{Ramsey theory in the integers}
+\section{VDW theorem}
 \end{document}

@@ -1,29 +1,36 @@
-\contentsline {chapter}{Apologia}{2}{chapter*.2}%
-\contentsline {chapter}{\numberline {1}Basic Counting: Sets and Tuples}{3}{chapter.1}%
-\contentsline {chapter}{\numberline {2}Graphs}{6}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Basic Definitions}{6}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Examples of Graphs}{7}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Subgraphs and isomorphisms}{8}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Walks, paths, and connectedness}{8}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Trees}{9}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Euler Circuits}{10}{section.2.6}%
-\contentsline {section}{\numberline {2.7}Bipartite Graphs}{10}{section.2.7}%
-\contentsline {section}{\numberline {2.8}Graph Colouring}{11}{section.2.8}%
-\contentsline {chapter}{\numberline {3}Matchings}{13}{chapter.3}%
-\contentsline {chapter}{\numberline {4}The Probabilistic Method}{14}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Basics}{14}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Mycelskian Graphs}{14}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Random Graphs}{14}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Large Girth and Large Chromatic Number}{15}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Extremal Graph Theory}{17}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Hamilton Cycles}{17}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Forbidden Subgraphs: Mantel's Theorem}{17}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Forbidden Subgraphs: Turán's Theorem}{18}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Digression: Double counting}{18}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Asymptotics: Turán density}{18}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Bipartite forbidden subgraphs}{19}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Erdos–Stone: the fundamental theorem of extremal graph theory}{19}{section.5.7}%
-\contentsline {chapter}{\numberline {6}Families of sets: Chains, antichains and intersection problems}{20}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Posets,chains and antichains}{20}{section.6.1}%
-\contentsline {section}{\numberline {6.2}LYM-inequality}{20}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Intersecting Families}{20}{section.6.3}%
+\contentsline {chapter}{Apologia}{3}{chapter*.2}%
+\contentsline {chapter}{\numberline {1}Basic Counting: Sets and Tuples}{4}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Graphs}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Basic Definitions}{7}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Examples of Graphs}{8}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Subgraphs and isomorphisms}{9}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Walks, paths, and connectedness}{9}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Trees}{10}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Euler Circuits}{11}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Bipartite Graphs}{11}{section.2.7}%
+\contentsline {section}{\numberline {2.8}Graph Colouring}{12}{section.2.8}%
+\contentsline {chapter}{\numberline {3}Matchings}{14}{chapter.3}%
+\contentsline {chapter}{\numberline {4}The Probabilistic Method}{15}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Basics}{15}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Mycelskian Graphs}{16}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Random Graphs}{17}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Large Girth and Large Chromatic Number}{18}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Extremal Graph Theory}{19}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Hamilton Cycles}{19}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Forbidden Subgraphs: Mantel's Theorem}{20}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Forbidden Subgraphs: Turán's Theorem}{22}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Digression: Double counting}{23}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Asymptotics: Turán density}{23}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Bipartite forbidden subgraphs}{24}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Erdos–Stone: the fundamental theorem of extremal graph theory}{24}{section.5.7}%
+\contentsline {chapter}{\numberline {6}Families of sets: Chains, antichains and intersection problems}{25}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Posets,chains and antichains}{25}{section.6.1}%
+\contentsline {section}{\numberline {6.2}LYM-inequality}{25}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Intersecting Families}{25}{section.6.3}%
+\contentsline {section}{\numberline {6.4}The linear algebra method}{25}{section.6.4}%
+\contentsline {section}{\numberline {6.5}L-intersecting families}{25}{section.6.5}%
+\contentsline {chapter}{\numberline {7}Ramsey Theory}{26}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Ramsey's theorem}{26}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Ramsey numbers: lower bounds and more colours}{27}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Ramsey theory in the integers}{27}{section.7.3}%
+\contentsline {section}{\numberline {7.4}VDW theorem}{27}{section.7.4}%
