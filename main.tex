@@ -91,7 +91,7 @@
 \chapter*{Apologia}
 \addcontentsline{toc}{chapter}{Apologia}
 
-This document contains worked answers and notes corresponding to the lecture notes of MATH0029: Graph Theory and Combinatorics, as taught by Dr. António Girão in 2025, written by a student taking the class. A lot of the answers given will focus more on getting the `spirit' of the question correct, rather than stressing technical details of the proofs.\\
+This document contains worked answers and notes corresponding to the lecture notes of MATH0029: Graph Theory and Combinatorics, as taught by Dr. António Girão in 2025, written by a student taking the class. A lot of the answers given will focus more on getting the `spirit' of the question correct, rather than stressing technical details of the proofs. Note that I have decided not to include Coursework questions!\\
 
 \noindent I've tried my best to check them all, but please note that these answers are \textbf{not} officially endorsed, so expect about $\lceil n/2 \rceil$ to be actually correct. Please email me with any mistakes you find. \\
 
@@ -848,12 +848,44 @@ Well its at least going to be as big as ex($n, C_d$) as $C_d$ is a subgraph.
   \end{align*}
   as required. 
 \end{answer}
+\begin{question}
+  
+\end{question}
+\begin{answer}
+  \begin{enumerate}
+    \item If $\mathcal{A}$ has chain length $t$, we can divide $\mathcal{A}$ into $t$ antichains. Then just apply LYM $t$ times. 
+    \item Seemingly from above $t \binom{n}{\lfloor n/2 \rfloor}$
+  \end{enumerate}
+\end{answer}
+\begin{question}
+  Coursework Question!
+\end{question}
+\begin{question}
+  Coursework Question!
+\end{question}
 \section{Intersecting Families}
 \begin{question}
   Let $n \geq 4$, give three examples of non-isomorphic intersecting families of sets in $\mathcal{P}([n])$ of size $2^{n-1}$. Note: two families of sets $\mathcal{A, B} \subseteq \mathcal{P}([n])$ are isomorphic iff there is a bijection $f : [n] \rightarrow [n]$ such that $\mathcal{B} = \{f(A): A \in \mathcal{A}\}$.
 \end{question}
 \begin{answer}
+  \begin{enumerate}
+    \item $A_1 = \{ A \in \mathcal{P}([n]): 1 \in A\}$
+    \item $A_2 = \{A \in \mathcal{P}([n]): |A \cap \{1,2,3\}| \geq 2\}$
+    \item $A_3 = \{A \in \mathcal{P}([n]) : |A \cap \{1,2,3,4,5\}| \geq 3\}$
+  \end{enumerate}
+  All clearly non isomorphic due to differing minimal set sizes. Also clearly all intersecting! 
+\end{answer}
+\begin{question}
   
+\end{question}
+\begin{answer}
+  Coursework Question!
+\end{answer}
+\begin{question}
+
+\end{question}
+\begin{answer}
+  Coursework Question!
 \end{answer}
 \section{The linear algebra method}
 No questions!
@@ -886,7 +918,51 @@ No questions!
 \begin{answer}
   Assume the graph containing all the red edges is disconnected. This means we can split the entire graph into (at least) two components without any red ages between them. Let these components be called $A$ and $B$, and pick arbitrary $a \in A$, $b \in B$. There must be an edge between $a$ and $b$ since we are in a complete graph, and this edge must be blue. This is true for all $a \in A$ and $b \in B$. So the blue subgraph is connected. 
 \end{answer}
+\begin{question}
+  
+\end{question}
+\begin{answer}
+  Since $K_{2n-2}$ has $2n-2$ vertices split the graph into two blocks of $n-1$ vertices $V_1$ and $V_2$. Colour all the edges within $V_1$ and $V_2$ blue, and the cross edges red. No blue $C_n$ as there aren't enough edges in each of the $V_i$ and you need a red edge to cross. No red $K_3$ since we would need a red edge in one of the $V_i$
+\end{answer}
 \section{Ramsey numbers: lower bounds and more colours}
+\begin{question}
+  
+\end{question}
+\begin{answer}
+  This is a somewhat straightfoward modification of theorem 7.5. For a fixed set of $2t$ vertices, the probability they span a red $K_{t,t}$ is $2^{-t^2}$. So the probability that its monochromatic is $2^{1 - t^2}$. There are $\binom{n}{t}^2$ ways to pick a $K_{t,t}$, so the expected number of monochrome $K_{t,t}$ is
+  \begin{align*}
+    \binom{n}{t}^2 2^{1-t^2} \leq n^{2t} 2^{1-t^2} \leq 2^{2t+1-t^2} \leq 2^{t(t-1) + 1 -t^2} = 2^{1-t} < 1
+  \end{align*}
+  Hence the prob its not monochrome is greater than zero. 
+\end{answer}
+\begin{question}
+  
+\end{question}
+\begin{question}
+  
+\end{question}
+\begin{answer}
+  Prove by induction, base case of $k=3$ is given by above and that $R_2(3) = 6$. Assume the hypothesis for $k$. We want to show that if $n = (k+1)(R_k(3) -1) +2$ then if we $k+1$ colour $K_n$, we get a monochrome triangle in any one of the colours.\\
+  Suppose we do $k+1$ colour $K_n$ in this regard. Pick some $v \in K_n$, this $v$ is connected to $n - 1 = (k+1)(R_k(3) -1) + 1$ other vertices. Since we have $k+1$ colours, by pigeonhole, there must be at least $R_k(3)$ vertices which join to $v$ with the same colour, say red (WLOG).\\
+  Suppose that there is at least one red edge in $\Gamma_{\text{red}}(v)$, then we get a red triangle. If not, we have that $\Gamma_{\text{red}}(v)$ only uses $k$ colours. But $|\Gamma_{\text{red}}(v)| \geq R_k(3)$. So by induction it contains a monochrome triangle in one of those $k$ colours.\\
+  The second part follows immediately from simplifying the bound to $R_k(3) \leq kR_{k-1}(3)$ 
+\end{answer}
+
+\begin{question}
+  
+\end{question}
+\begin{answer}
+  To prove that $R(s,t) > m$ we want to show we can colour $K_m$ without getting a red $K_s$ or blue $K_t$. Consider $K_n$ where we colour the edges red with probability $p$ and colour edges blue with probability $(1-p)$. The expected number of red $K_s$ is $\binom{n}{s}p^{\binom{s}{2}}$ and the expected number of blue $K_t$ is $\binom{n}{t}(1-p)^{\binom{t}{2}}$. So the expected number of "Bad" subgraphs is the sum of both these values (say $X + Y$). By first moment there is a colouring of $K_n$ wherein the number of bad subgraphs is less than $X + Y$ is less than this sum. So given $K_n$ if we delete one vertex for each "Bad" subgraph, there is a colouring in which we delete at most $X + Y$ vertices. Hence there is a colouring of $K_m$ where $m = n - (X + Y)$ which doesn't have any bad subgraphs. So $R(s,t) > m$. 
+\end{answer}
+
+\begin{question}
+  
+\end{question}
+\begin{answer}
+  
+\end{answer}
+
 \section{Ramsey theory in the integers}
 \section{VDW theorem}
+
 \end{document}

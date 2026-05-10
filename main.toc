@@ -27,10 +27,10 @@
 \contentsline {section}{\numberline {6.1}Posets,chains and antichains}{27}{section.6.1}%
 \contentsline {section}{\numberline {6.2}LYM-inequality}{28}{section.6.2}%
 \contentsline {section}{\numberline {6.3}Intersecting Families}{28}{section.6.3}%
-\contentsline {section}{\numberline {6.4}The linear algebra method}{28}{section.6.4}%
-\contentsline {section}{\numberline {6.5}L-intersecting families}{28}{section.6.5}%
-\contentsline {chapter}{\numberline {7}Ramsey Theory}{29}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Ramsey's theorem}{29}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Ramsey numbers: lower bounds and more colours}{30}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Ramsey theory in the integers}{30}{section.7.3}%
-\contentsline {section}{\numberline {7.4}VDW theorem}{30}{section.7.4}%
+\contentsline {section}{\numberline {6.4}The linear algebra method}{29}{section.6.4}%
+\contentsline {section}{\numberline {6.5}L-intersecting families}{29}{section.6.5}%
+\contentsline {chapter}{\numberline {7}Ramsey Theory}{30}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Ramsey's theorem}{30}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Ramsey numbers: lower bounds and more colours}{31}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Ramsey theory in the integers}{32}{section.7.3}%
+\contentsline {section}{\numberline {7.4}VDW theorem}{32}{section.7.4}%
