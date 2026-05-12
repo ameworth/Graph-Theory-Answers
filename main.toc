@@ -33,4 +33,4 @@
 \contentsline {section}{\numberline {7.1}Ramsey's theorem}{30}{section.7.1}%
 \contentsline {section}{\numberline {7.2}Ramsey numbers: lower bounds and more colours}{31}{section.7.2}%
 \contentsline {section}{\numberline {7.3}Ramsey theory in the integers}{32}{section.7.3}%
-\contentsline {section}{\numberline {7.4}VDW theorem}{32}{section.7.4}%
+\contentsline {section}{\numberline {7.4}VDW theorem}{33}{section.7.4}%

@@ -887,9 +887,21 @@ Well its at least going to be as big as ex($n, C_d$) as $C_d$ is a subgraph.
 \begin{answer}
   Coursework Question!
 \end{answer}
+
+\begin{question}
+  
+\end{question}
 \section{The linear algebra method}
 No questions!
 \section{L-intersecting families}
+\begin{question}
+  
+\end{question}
+\begin{answer}
+  The placement of this question seems to suggest we ought to use the modular version of RCW, but that is overpowered and not actually needed. Define $\mathcal{A}_2$ and $\mathcal{A}_3$ as in the hint. $|A_i| \in \mathcal{A}$ is not a multiple of 6 whenever either $|A_i|$ is not a multiple of 3 or not a multiple of 2 (or both). So by the inclusion-exclusion principle: $|\mathcal{A}| \leq |\mathcal{A}_2| + |\mathcal{A}_3|$. Then, applying Theorem 6.12 (which we can do, since the intersections are multiples of 6 and so therefore have even intersections) we get that $|\mathcal{A}_2| \leq n$. Similarly, apply a variant of Theorem 6.12 to $\mathcal{A}_3$ but with incident vectors over $\mathbb{F}_3^n$, we get that $v_i \cdot v_j = 0$ mod 3 when $i \neq j$ and nonzero otherwise. Hence $|\mathcal{A}_3| \leq n$.  \\
+  
+  We could also get the answer via modular RCW as our intersecting set would be $L = \{0\}$ mod 2 or mod 3 hence both would have upper bound $\binom{n}{1}$
+\end{answer}
 \chapter{Ramsey Theory}
 
 \section{Ramsey's theorem}
@@ -938,6 +950,9 @@ No questions!
 \begin{question}
   
 \end{question}
+\begin{answer}
+  Colour $K_17$ red, blue, and green. For any $v \in V$ we have that $d(v) = 16$ so by pigeonhole, one colour must have $d_c(v) \geq 6$. WLOG $d_\text{red}(v) \geq 6$. Suppose that there is a red edge in $\Gamma_\text{red}(v)$, then we get a red $K_3$ with two edges coming from $v$. If there is no red edges in $\Gamma_\text{red}(v)$, then $\Gamma_\text{red}(v)$ is entirely blue-green coloured. Since $R(3,3) = 6 \leq |\Gamma_\text{red}(v)|$ it must contain either a blue or green triangle. 
+\end{answer}
 \begin{question}
   
 \end{question}
@@ -959,10 +974,27 @@ No questions!
   
 \end{question}
 \begin{answer}
+  In order for this family to fail to be rainbow, we need at least one of the sets $A \in \mathcal{A}$ uses at most $r-1$ colours. Suppose we $r$-colour the set $[n]$ randomly, so that each element has a $1/r$ chance of being a particular colour. Hence the probability that a given element is not a certain colour is $1 - 1/r = \frac{r-1}{r}$. Each element is coloured independently, so the probability that all elements of $A$ (of which there are $k$) are not a given colour is $(\frac{r-1}{r})^k$. Since there are $r$ colours, by union bound we have
+  \begin{align*}
+    \mathbf{P}[A \text{ missing at least one colour}] \leq r \left( \frac{r-1}{r}\right)^k
+  \end{align*}
+  If we let $X$ be the random variable which counts the number of sets which are not rainbow, by linearity of expectation we have that
+  \begin{align*}
+    \mathbf{E}[X] \leq |\mathcal{A}|r \left( \frac{r-1}{r}\right)^k = r - 1
+  \end{align*}
   
 \end{answer}
 
 \section{Ramsey theory in the integers}
+\begin{question}
+  
+\end{question}
+\begin{answer}
+  From the proof of Schur's Lemma, we need $R_k(3)$ vertices to gurantee a triangle, however the largest difference is $R_k(3) - 1$ so we are actually guaranteed to get a solution for $R_k(3) -1$ so this is an upper bound. 
+\end{answer}
+\begin{question}
+  
+\end{question}
 \section{VDW theorem}
 
 \end{document}
