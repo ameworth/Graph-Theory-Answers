@@ -594,7 +594,9 @@ No questions! woohoo!
   What is the expected number of copies of $C_5$ in a random graph $H \in \mathcal{G}(n,p)$
 \end{question}
 \begin{answer}
-  Immediate application of Lemma 4.10 gives $\mathbb{E}[C_5] = \frac{n(n-1)(n-2)(n-3)(n-4)}{10}p^5 = 12\binom{n}{5}p^5$
+  Immediate application of Lemma 4.10 gives $\mathbb{E}[C_5] = \frac{n(n-1)(n-2)(n-3)(n-4)}{10}p^5 = 12\binom{n}{5}p^5$.\\
+
+  We can actually summarise this Lemma into a general formula. Let $H$ be the desired subgraph, with edges $e(H)$ and vertices $v(H)$, then the expectated number of cliques will be $\mathbf{E}[X_H] = \frac{(n)_{v(H)}}{|\text{Aut}(H)|}p^{e(H)}$
 \end{answer}
 
 
@@ -854,7 +856,7 @@ Well its at least going to be as big as ex($n, C_d$) as $C_d$ is a subgraph.
 \begin{answer}
   \begin{enumerate}
     \item If $\mathcal{A}$ has chain length $t$, we can divide $\mathcal{A}$ into $t$ antichains. Then just apply LYM $t$ times. 
-    \item Seemingly from above $t \binom{n}{\lfloor n/2 \rfloor}$
+    \item Seemingly from above $t \binom{n}{\lfloor n/2 \rfloor}$. I believe there is actually a sharper bound but I am not clever enough to get there! I think basically you take the largest sets from each level of $t$. 
   \end{enumerate}
 \end{answer}
 \begin{question}
