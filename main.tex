@@ -628,7 +628,15 @@ No questions! woohoo!
   Prove that any graph of order $n \geq 3$ and size at least $\binom{n-1}{2} + 2$ contains a hamilton cycle. Give an example to prove that this is best possible.
 \end{question}
 \begin{answer}
-  For the first part, any graph of order $n$ with $\binom{n-1}{2} + 2$ edges must contain a clique of order $n-1$. All of the nodes in the clique have order $n-2$. There are $n-1$ nodes in the clique, so there must be some node not in it, say $v$. As $K_{n-1}$ has $\binom{n-1}{2}$ edges there must be at least two edges left. As we only allow simple graphs, these edges must be adjacent to $v$, so $d(v) \geq 2$. Hence Ore's theorem applies and the graph is Hamiltonian.\\
+  Assume that $G$ is not Hamiltonian, then there exists at least two non-adjacent vertices such that $d(u) + d(v) \leq n-1$. How many edges can such a graph have? Well, we are definitely missing $uv$. Moreover, if the graph was maximal, $u$ would be connected to $n-1$ other vertices, but its only connected to $d(u)$, so in actual fact we are missing $n-1 - d(u)$ potential edges from the complete graph. Similar for $v$. So the total missing is 
+  \begin{align*}
+    [(n-1) - d(u)] + [(n-1) - d(v)] -1 = 2n - 3 - (d(u) + d(v))
+  \end{align*}
+  So subtract this from the complete graph and apply our inequality we get
+  \begin{align*}
+    |E(G)| \leq \binom{n}{2} - (n-2)
+  \end{align*}
+  Rearranging and doing a bit of algebra gives that $|E(G)| \leq \binom{n-1}{2} + 1$ which is a contradiction. Hence the graph must be hamiltonian.\\
   Note that $K_{n-1}$ has $\binom{n-1}{2}$ edges, so if we adjoin a path of length 1 to one of the nodes of $K_{n-1}$ then it has less than $\binom{n-1}{2} + 2$ edges but clearly does not have a hamilton cycle. 
 \end{answer}
 
